@@ -12,15 +12,15 @@ namespace EternalQuest
         //Empt constructor for Program to call on Menu
         public Menu()
         {
-            
+
         }
 
         //Method to process the user choice from the main menu.  Calls on ListHandling methods to process requests
         public void MenuItem()
-        {         
+        {
             //GoalHandling goal = new GoalHandling();   
             do
-            {        
+            {
                 _choice = GetChoice();
                 switch (_choice)
                 {
@@ -34,8 +34,8 @@ namespace EternalQuest
                         //List Goals
                         ForegroundColor = ConsoleColor.DarkRed;
                         WriteLine("\nGoals List:\n");
-                        ForegroundColor = ConsoleColor.Blue; 
-                        newGoal.ListGoal();    
+                        ForegroundColor = ConsoleColor.Blue;
+                        newGoal.ListGoal();
 
                         break;
 
@@ -48,18 +48,18 @@ namespace EternalQuest
                         ForegroundColor = ConsoleColor.DarkRed;
                         WriteLine("\nYour goals have been saved!");
                         ForegroundColor = ConsoleColor.Blue;
-                                  
+
                         break;
 
                     case "4":
                         //Load Goals
                         ForegroundColor = ConsoleColor.DarkRed;
-                        WriteLine("\nLoading Goals");  
+                        WriteLine("\nLoading Goals");
                         newGoal.LoadGoal();
                         Thread.Sleep(1000);
                         ForegroundColor = ConsoleColor.DarkRed;
-                        WriteLine("\nGoal file Loaded!  Please choose 'List Goals' from the main menu to see the list of goals."); 
-                        ForegroundColor = ConsoleColor.Blue; 
+                        WriteLine("\nGoal file Loaded!  Please choose 'List Goals' from the main menu to see the list of goals.");
+                        ForegroundColor = ConsoleColor.Blue;
 
                         break;
 
@@ -70,9 +70,9 @@ namespace EternalQuest
                         newGoal.UserRecordEvent();
                         Thread.Sleep(1000);
                         ForegroundColor = ConsoleColor.Blue;
-                                        
+
                         break;
-                    
+
                     case "6":
                         //Remove an object from the list
                         ForegroundColor = ConsoleColor.DarkRed;
@@ -106,11 +106,11 @@ namespace EternalQuest
             bool properChoice = false;
 
             do
-            {                
+            {
                 //Menu choices for the user.
                 WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 ForegroundColor = ConsoleColor.DarkRed;
-                
+
                 //Displays the Goal Master Badge and level based on points
                 Badges newBadge = new Badges();
                 string masterLevel = newBadge.GetBadgeLevel(newGoal.GetTotalPoints());
@@ -131,14 +131,14 @@ namespace EternalQuest
                 WriteLine("6. Remove a Goal");
                 WriteLine("7. Quit");
                 WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-                
+
 
                 //Wait for key to be pressed, helps make sure menu messages get to be seen
                 ForegroundColor = ConsoleColor.DarkRed;
                 Write("\nEnter your choice: ");
                 ForegroundColor = ConsoleColor.Blue;
                 _choice = ReadLine();
-                
+
 
 
                 //This section is to verify that the choice was actually correct and avoids user error problems.
@@ -159,7 +159,7 @@ namespace EternalQuest
 
         //This is a secondary menu that appears for Choice 1 so the user can create a goal
         private void SubMenu()
-        {            
+        {
             string type = "";
             WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             WriteLine("\nWhat kind of goal would you like to make?");
@@ -167,15 +167,15 @@ namespace EternalQuest
             WriteLine("2. Checklist Goal");
             WriteLine("3. Eternal Goal");
             WriteLine("\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-            
 
-            
+
+
             //Wait for key to be pressed, helps make sure menu messages get to be seen
             ForegroundColor = ConsoleColor.DarkRed;
             Write("\nEnter your choice: ");
             ForegroundColor = ConsoleColor.Blue;
             string goalChoice = ReadLine();
-            
+
 
             //This section is to verify that the choice was actually correct and avoids user error problems, also calls method to set goals
             if (goalChoice == "1")
@@ -183,21 +183,21 @@ namespace EternalQuest
                 WriteLine("Simple Goal");
                 type = "Simple Goal";
                 newGoal.SetGoal(type);
-            } 
-            else if (goalChoice == "2")  
+            }
+            else if (goalChoice == "2")
             {
                 WriteLine("Checklist Goal");
                 type = "Checklist Goal";
                 newGoal.SetGoal(type);
-            } 
+            }
             else if (goalChoice == "3")
             {
                 WriteLine("Eternal Goal");
                 type = "Eternal Goal";
                 newGoal.SetGoal(type);
             }
-            else  WriteLine($"\n'{goalChoice}' is not an available choice. Try Again.");
-           
+            else WriteLine($"\n'{goalChoice}' is not an available choice. Try Again.");
+
         }
 
     }
